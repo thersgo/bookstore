@@ -7,24 +7,31 @@
 	
 	<?php include 'database.php' ?>
 </head>
+
 <body>
 	<ul>
 		<?php
 			$statement = $pdo->prepare('
 				SELECT * FROM books
-				ORDER BY ?
+				ORDER BY title
 			;');
 			$statement->execute([
-				'title'
 			]);
 			
 			while ($book = $statement->fetch()) {
 				$title = $book['title'];
-				$date = $book['release_date'];
-				echo "<li>$title ($date)</li>\n";
+				$date  = $book['release_date'];
+				$index = $book['id'];
+				
+				echo <<<END
+		<li>
+					<a href='/book.php?index=$index'>
+						$title ($date)
+					</a>
+				</li> 
+		END;
 			}
 		?>
 	</ul>
 </body>
 </html>
-
