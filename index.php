@@ -6,9 +6,7 @@
 	<title>Bookstore</title>
 	
 	<?php
-		$host    = 'localhost'; $db   = 'Books';
-		include_once 'secrets.php';
-		$charset = 'utf8mb4';
+		include_once 'config.php';
 		
 		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 		$options = [
@@ -25,11 +23,15 @@
 <body>
 	<ul>
 		<?php
-		$stmt = $pdo->query('
+		$statement = $pdo->prepare('
 			SELECT * FROM books
-			ORDER BY title
+			ORDER BY ?
 		;');
-		while ($book = $stmt->fetch()) {
+		$statement->execute([
+			'title'
+		]);
+		
+		while ($book = $statement->fetch()) {
 			$title = $book['title'];
 			$date = $book['release_date'];
 			echo "<li>$title ($date)</li>\n";
