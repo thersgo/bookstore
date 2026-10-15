@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<ul>
+	<div class='grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] m-4'>
 		<?php
 			$statement = $pdo->prepare('
 				SELECT * FROM books
@@ -23,13 +23,23 @@
 				$title = $book['title'];
 				$date  = $book['release_date'];
 				$index = $book['id'];
+				$cover = $book['cover_path'];
+				$type  = $book['type'];
 				
 				echo <<<END
-		<li>
-					<a href='/book.php?index=$index'>
-						$title ($date)
-					</a>
-				</li> 
+		<a href='/book.php?index=$index' class='
+					m-2 p-2 h-100 rounded-lg bg-black text-white
+					flex flex-col justify-between items-center text-center
+				'>
+					<img
+						class='object-contain h-full'
+						loading='lazy' src='$cover'
+					/>
+					<div>
+						$title <br/>
+						($date; $type)
+					</div>
+				</a>
 		END;
 			}
 		?>

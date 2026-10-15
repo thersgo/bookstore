@@ -9,12 +9,11 @@
 	<?php include 'database.php' ?>
 </head>
 
-<body style="background-color: #000; margin: 0;">
-	<main style="
-		width: 50%; margin-left: auto; margin-right: auto;
-		background-color: #222; color: #ddd;
-		min-height: 100vh; margin-top: 0;
-	">
+<body class='bg-black m-0'>
+	<main class='
+		min-h-screen mt-0 max-w-256 mx-auto
+		bg-slate-800 text-slate-300
+	'>
 		<?php
 			$statement = $pdo->prepare('
 				SELECT * FROM books
@@ -32,28 +31,33 @@
 			
 			$date     = $book['release_date'];
 			$language = $book['language'];
+			$price    = $book['price'];
 			$pages    = $book['pages'];
 			
 			$summary  = $book['summary'];
 			
 			echo <<<END
-			<div style="display: flex; padding: 10px">
-				<img src="$cover">
-				<div style="margin-left: 5px; margin-top: 0;"
-					<h1 style="margin-top: 0;">
-						$title ($type)
-					</h1>
-					<ul>
+			<div class='flex p-8 flex-col sm:flex-row'>
+				<img src="$cover" class='
+					object-contain h-full
+					sm:w-auto sm:h-full
+				'>
+				<div class='sm:ml-8'>
+					<ul class='
+						flex flex-col mt-8 sm:mt-0 mb-8
+						justify-between gap-2
+					'>
+						<li class='text-3xl'>$title ($type)</li>
 						<li>Release date: $date</li>
 						<li>Language: $language</li>
 						<li>Price: $price</li>
 						<li>Page count: $pages</li>
 					</ul>
+					<p>
+						$summary
+					</p>
 				</div>
 			</div>
-			<p style="padding-left: 2rem; padding-right: 2rem;">
-				$summary
-			</p>
 			END;
 		?>
 	</main>
