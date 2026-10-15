@@ -10,4 +10,3 @@ $options = [
 ];
 $pdo = new PDO($dsn, $user, $pass, $options);
 
-
