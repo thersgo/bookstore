@@ -16,8 +16,7 @@
 				SELECT * FROM books
 				ORDER BY title
 			;');
-			$statement->execute([
-			]);
+			$statement->execute([]);
 			
 			while ($book = $statement->fetch()) {
 				$title = $book['title'];

@@ -1,6 +1,6 @@
 Rakenduse vajalik funktsionaalsus:
 
-- [ ] Raamatute nimekiri
+- [x] Raamatute nimekiri
   - Loo avaleht, millel kuvatakse andmebaasis olevate raamatute nimekiri.
   - Raamatu pealkiri peab olema link, millele vajutades avaneb konkreetse
     raamatu detailvaade.
