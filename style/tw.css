@@ -1,3 +1,3 @@
 @import "tailwindcss";
-/* npx @tailwindcss/cli -i ./style/tw.css -o ../style/out.css --watch */
+/* npx @tailwindcss/cli -i ./style/tw.css -o ./style/out.css --watch */
 
