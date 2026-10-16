@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width"/>
-	<link href="./style.css" rel="stylesheet">
+	<link href="../style/out.css" rel="stylesheet">
 	<title>Bookstore</title>
 	
-	<?php include 'database.php' ?>
+	<?php include '../database/run.php' ?>
 </head>
 
 <body class='bg-black m-0'>
@@ -58,7 +58,7 @@
 									<li>Price: $price</li>
 									<li>Page count: $pages</li>
 									
-				END; // so the resulting html would still look nice
+				END;
 			
 			$relation_statement = $pdo->prepare('
 				SELECT author_id FROM book_authors

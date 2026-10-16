@@ -1,5 +1,5 @@
 config.php
-style.css
+style/out.css
 
 # kept here for my own personal ease.
 Books.sql

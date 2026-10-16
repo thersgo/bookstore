@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width"/>
-	<link href="./style.css" rel="stylesheet">
+	<link href="./style/out.css" rel="stylesheet">
 	<title>Bookstore</title>
 	
-	<?php include 'database.php' ?>
+	<?php include 'database/run.php' ?>
 </head>
 
-<body>
+<body class='bg-black'>
 	<div class='grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] m-4'>
 		<?php
 			$statement = $pdo->prepare('
@@ -26,8 +26,9 @@
 				$type  = $book['type'];
 				
 				echo <<<END
-		<a href='/book.php?index=$index' class='
-					m-2 p-2 h-100 rounded-lg bg-black text-white
+		<a href='/views/book.php?index=$index' class='
+					m-2 p-2 h-100 rounded-lg
+					bg-slate-800 text-slate-300
 					flex flex-col justify-between items-center text-center
 				'>
 					<img
